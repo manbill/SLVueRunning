@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
     <mu-appbar color="primary" v-if='appBar.height'>
-          <mu-button icon slot="left">
-            <mu-icon value="keyboard_arrow_left" @click="goback(-1)"></mu-icon>
+          <mu-button icon slot="left" @click="goback()">
+            <mu-icon value="keyboard_arrow_left"></mu-icon>
           </mu-button>
           Photo
     </mu-appbar>
@@ -23,8 +23,12 @@ export default {
     }
   },
   methods:{
-    goback(n){
-      this.$route.goback(n);
+    goback(){
+      if(this.$route.matched.length>1){
+        this.$router.back();
+      }else{
+        console.log(this.$route.matched.length);
+      }
     },
     
   },
