@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div id='app'>
+    <mu-appbar color="primary" v-if='appBar.height'>
+          <mu-button icon slot="left">
+            <mu-icon value="keyboard_arrow_left" @click="goback(-1)"></mu-icon>
+          </mu-button>
+          Photo
+    </mu-appbar>
+    <router-view></router-view>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Home from './components/Home.vue'
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Home
+  },
+  data(){
+    return {
+    }
+  },
+  methods:{
+    goback(n){
+      this.$route.goback(n);
+    },
+    
+  },
+  computed:{
+    ...mapGetters(['appBar'])
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .mu-appbar{
+    position: sticky;
+    top:0;
+    height: 56px;
+  }
 </style>
