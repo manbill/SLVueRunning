@@ -6,14 +6,17 @@
             </mu-button>
             {{appBar.title}}
       </mu-appbar>
-      <div class='view'>
-        <router-view></router-view>
-      </div>
+      <transition name="slide-left" mode="out-in">
+        <keep-alive>
+         <router-view></router-view>
+        </keep-alive>
+      </transition>
+
 </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 const console = window.console;
 export default {
   name: 'app',
@@ -23,15 +26,23 @@ export default {
     return {
     }
   },
+  mounted(){
+    this.setAppBarTitle({title:"首页"});
+  },
   methods:{
     goback(){
       if(this.$route.matched.length>1){
-        this.$router.back();
+        this.$router.go(-1);
       }else{
         console.log(this.$route.matched.length);
+        var self = this;
+        //直接回到首页
+        this.$router.replace('/',()=>{
+          self.setAppBarTitle({title:"首页"});
+        })
       }
     },
-    
+    ...mapActions(['setAppBarTitle'])
   },
   computed:{
     ...mapGetters(['appBar'])

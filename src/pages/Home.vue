@@ -5,7 +5,7 @@
           <carousel-image :carousels="carousels"></carousel-image>
       </div>
       <div  class="features">
-        <home-features :homeFeatures='homeFeatures'></home-features>
+        <home-features :homeFeatures='homeFeatures' v-on:open-feature='openFeature'></home-features>
       </div>
     </mu-flex>
 </div>
@@ -18,18 +18,22 @@ export default {
   name: "home",
   data() {
     return {
-      home: "首页"
     };
   },
   created() {
+    console.log("");
     this.fetchCarousels();
     this.fetchHomeFeatures();
   },
+  mounted(){
+     
+  },
   methods: {
-    ...mapActions([
-      "fetchCarousels",
-      "fetchHomeFeatures",
-      ])
+    ...mapActions(["fetchCarousels", "fetchHomeFeatures"]),
+    openFeature(route) {
+      console.log(route);
+      this.$router.push(route);
+    }
   },
   computed: {
     innerHeight() {
@@ -40,7 +44,7 @@ export default {
     },
     ...mapGetters({
       carousels: "getCarousels",
-      homeFeatures:"getFeatures"
+      homeFeatures: "getFeatures"
     })
   },
   components: {

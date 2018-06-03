@@ -1,19 +1,15 @@
 import * as types from "../mutation-types";
+import {ROUTE_PATHS} from '../../routes/app-routes/app-route';
 import {} from "vuex";
 const state = {
-  title: "Home",
   features: [],
   carouselImages: []
 };
 const getters = {
-  getTitle: state => state.title,
   getFeatures: s => s.features,
   getCarousels: s => s.carouselImages
 };
 const mutations = {
-  [types.SET_HOME_TITLE](state, payload) {
-    state.title = payload.title;
-  },
   [types.FETCH_HOME_FEATURES_COMPLETED](s, payload) {
     s.features = payload;
   },
@@ -29,9 +25,6 @@ const mutations = {
   }
 };
 const actions = {
-  setTitle: function({ commit }) {
-    commit(types.SET_HOME_TITLE, "home标题");
-  },
   fetchHomeFeatures({ commit }) {
     commit(types.FETCH_HOME_FEATURES);
     //位置越小越排在前面
@@ -39,17 +32,20 @@ const actions = {
       {
         title: "团队",
         order: 1,
-        icon: "menu"
+        icon: "menu",
+        route:ROUTE_PATHS.team
       },
       {
         title: "活动",
         order: 3,
-        icon: "menu"
+        icon: "menu",
+        route:ROUTE_PATHS.activities
       },
       {
         title: "打卡",
         order: 2,
-        icon: "menu"
+        icon: "menu",
+        route:ROUTE_PATHS.clocking
       }
     ]).then(fts => {
       commit(types.FETCH_HOME_FEATURES_COMPLETED, fts);

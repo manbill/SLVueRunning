@@ -1,7 +1,6 @@
 export const GET_LIST_DATA="get_list_data";
-export const SET_HOME_TITLE="set_home_title";
 export const GET_HOME_TITLE="get_home_title";
-export const HIDE_APP_BAR='hide_app_bar';
+export const SET_APP_BAR_TITLE='set_app_bar_title';
 export const SHOW_APP_BAR='show_app_bar';
 export const FETCH_HOME_FEATURES='fetch_home_features';
 export const FETCH_HOME_FEATURES_COMPLETED='fetch_home_features_completed';

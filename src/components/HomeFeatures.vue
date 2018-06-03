@@ -3,7 +3,7 @@
     <mu-row v-for='(index) of rows' :key='index' :gutter='true'>
       <mu-col v-for="(ft,i) of colsOfRow(index-1)" :key='i' :order='ft.order'>
         <mu-flex direction='column' align-items='center'>
-          <mu-button icon  fill fab>
+          <mu-button icon  fill fab @click="$emit('open-feature',ft.route)">
             <mu-icon :value='ft.icon' :size='30'></mu-icon>
           </mu-button>
           <p>{{ft.title}}</p>
@@ -30,7 +30,7 @@ export default {
   created() {},
   methods:{
     colsOfRow(row){
-      console.log(row,this.features.slice(this.cols*row,this.cols*(row+1)));
+      // console.log(row,this.features.slice(this.cols*row,this.cols*(row+1)));
       return this.features.slice(this.cols*row,this.cols*(row+1));
     }
   },

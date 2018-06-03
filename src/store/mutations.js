@@ -1,16 +1,16 @@
 import * as types from "./mutation-types";
 export default{
-  [types.SHOW_APP_BAR](state){
+  [types.SHOW_APP_BAR](state,payload){
     state.appBar={
       ...state.appBar,
-      show:true
+      show:!!payload
     }
   },
-  [types.HIDE_APP_BAR](state){
-    state.appBar={
-      ...state.appBar,
-      show:false
+  [types.SET_APP_BAR_TITLE](s,payload){
+    s.appBar={
+      ...s.appBar,
+      title:payload.title
     }
-  },
+  }
 
 }
