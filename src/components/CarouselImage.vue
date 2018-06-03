@@ -1,10 +1,10 @@
 <template>
-    <div class='carousel-wrapper'>
+    <div class='carousel-wrapper'  v-finger:swipe="swipe">
       <div class="carousel-inner" ref="carouselInner" :style="{width:images.length*100+'%'}">
         <div class='carousel-item' ref="carouselDomItems" :class="active[index]" v-for='(img,index) of images' :key='index' >
           <img :src="img.src"  :alt="img.caption">
           <caption class="caption">
-            <h1>第{{index+1}}张图片</h1>
+            <h3>第{{index+1}}张图片</h3>
             <p>
               {{index+1}}
             </p>
@@ -30,6 +30,10 @@
 export default {
   name: "carousel-image",
   props:{
+    carousels:{
+      type:Array,
+      default:()=>[]
+    },
     intervalTime:{
       type:Number,
       default:3*1000
@@ -43,7 +47,7 @@ export default {
     };
   },
   created() {
-    console.log(this.intervalTime);
+    window.console.log(this.intervalTime);
     var self = this;
     this.intervalHandler = setInterval(()=>{
       // console.log(self.interval);
@@ -54,6 +58,14 @@ export default {
     clearInterval(this.intervalHandler);
   },
   methods: {
+    swipe(evt){
+      // window.console.log(evt);
+      if(evt.direction&&"left".toLowerCase()==evt.direction.toLowerCase()){
+        this.next();
+      }else{
+        this.pre();
+      }
+    },
     pre() {
       this.showIndicatorImage(this.calcIndex(this.curIndex - 1));
     },
@@ -77,23 +89,16 @@ export default {
       return this.$refs.carouselDomItems[this.calcIndex(this.curIndex + 1)];
     },
     showIndicatorImage(index) {
-      console.log(index,'curIndex:'+this.curIndex);
+      // window.console.log(index,'curIndex:'+this.curIndex);
       this.curIndex = index;
       Object.keys(this.active).map(k=>this.active[k].active=k==index);
     }
   },
   computed: {
     images() {
-      console.log("computed");
-      var imgs = new Array(10).fill(null).map((a, i) => {
-        this.$set(this.active, i, { active: i == 0 });
-        return {
-          src: require(`../assets/images/${i + 1}.jpg`),
-          caption: "logo",
-          id: i++
-        };
-      });
-      return imgs;
+      // window.console.log("computed");
+      this.carousels.map((img,i)=>this.$set(this.active, i, { active: i == 0 }));      
+      return this.carousels;
     }
   }
 };
@@ -118,7 +123,7 @@ export default {
       position: relative;
       flex: 1;
       visibility: collapse;
-      opacity: 0;
+      opacity: 0.5;
       transition:opacity 1s ease-out;
       .caption {
         // display: none;
@@ -160,14 +165,15 @@ export default {
     margin: 0 15%;
     li {
       position: relative;
-      opacity: 0.5;
+      opacity: 0.8;
       flex: 0 1 auto;
       width: 30px;
       height: 3px;
       margin: 0 3px;
-      background-color: red;
+      background-color: white;  
       &.active {
         opacity: 1;
+        background-color: red;  
       }
       cursor: pointer;
       &:after,

@@ -5,7 +5,12 @@ import 'muse-ui/dist/muse-ui.css';
 import routes  from "./routes/app-routes/app-route";
 import VueRouter from "vue-router";
 import store from "./store/store";
-import theme from 'muse-ui/lib/theme';
+import AlloyFinger from 'alloyfinger';
+import AlloyFingerPlugin from 'alloyfinger/vue/alloy_finger.vue';
+Vue.use(AlloyFingerPlugin, {
+    AlloyFinger
+});
+// import theme from 'muse-ui/lib/theme';
 // theme.use('dark');
 Vue.use(MuseUI);
 Vue.use(VueRouter);
