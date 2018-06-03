@@ -9,7 +9,8 @@ const store = new Vuex.Store({
     state:{
         appBar:{
             height:56,
-            show:true
+            show:true,
+            title:'首页'
         }
     },
     mutations,

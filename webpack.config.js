@@ -1,6 +1,6 @@
 {
   mode: 'development',
-  context: 'E:\\Vue\\projects\\slving',
+  context: 'D:\\Vue\\SLVueRunning',
   devtool: 'cheap-module-eval-source-map',
   node: {
     setImmediate: false,
@@ -12,14 +12,14 @@
     child_process: 'empty'
   },
   output: {
-    path: 'E:\\Vue\\projects\\slving\\dist',
+    path: 'D:\\Vue\\SLVueRunning\\dist',
     filename: '[name].js',
     publicPath: '/'
   },
   resolve: {
     symlinks: true,
     alias: {
-      '@': 'E:\\Vue\\projects\\slving\\src',
+      '@': 'D:\\Vue\\SLVueRunning\\src',
       vue$: 'vue/dist/vue.runtime.esm.js'
     },
     extensions: [
@@ -30,15 +30,15 @@
     ],
     modules: [
       'node_modules',
-      'E:\\Vue\\projects\\slving\\node_modules',
-      'E:\\Vue\\projects\\slving\\node_modules\\@vue\\cli-service\\node_modules'
+      'D:\\Vue\\SLVueRunning\\node_modules',
+      'D:\\Vue\\SLVueRunning\\node_modules\\@vue\\cli-service\\node_modules'
     ]
   },
   resolveLoader: {
     modules: [
       'node_modules',
-      'E:\\Vue\\projects\\slving\\node_modules',
-      'E:\\Vue\\projects\\slving\\node_modules\\@vue\\cli-service\\node_modules'
+      'D:\\Vue\\SLVueRunning\\node_modules',
+      'D:\\Vue\\SLVueRunning\\node_modules\\@vue\\cli-service\\node_modules'
     ],
     symlinks: true
   },
@@ -53,7 +53,7 @@
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: 'E:\\Vue\\projects\\slving\\node_modules\\.cache\\vue-loader',
+              cacheDirectory: 'D:\\Vue\\SLVueRunning\\node_modules\\.cache\\vue-loader',
               cacheIdentifier: '35802716'
             }
           },
@@ -64,7 +64,7 @@
               compilerOptions: {
                 preserveWhitespace: false
               },
-              cacheDirectory: 'E:\\Vue\\projects\\slving\\node_modules\\.cache\\vue-loader',
+              cacheDirectory: 'D:\\Vue\\SLVueRunning\\node_modules\\.cache\\vue-loader',
               cacheIdentifier: '35802716'
             }
           }
@@ -1040,8 +1040,8 @@
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: 'E:\\Vue\\projects\\slving\\node_modules\\.cache\\babel-loader',
-              cacheIdentifier: '02bab116'
+              cacheDirectory: 'D:\\Vue\\SLVueRunning\\node_modules\\.cache\\babel-loader',
+              cacheIdentifier: '794a92c0'
             }
           },
           /* config.module.rule('js').use('babel-loader') */
@@ -1056,7 +1056,7 @@
         test: /\.(vue|(j|t)sx?)$/,
         exclude: [
           /node_modules/,
-          'E:\\Vue\\projects\\slving\\node_modules\\@vue\\cli-service\\lib'
+          'D:\\Vue\\SLVueRunning\\node_modules\\@vue\\cli-service\\lib'
         ],
         use: [
           /* config.module.rule('eslint').use('eslint-loader') */
@@ -1069,7 +1069,7 @@
                 '.vue'
               ],
               cache: true,
-              cacheIdentifier: '1f0920e2',
+              cacheIdentifier: 'a5d57936',
               emitWarning: true,
               formatter: function () { /* omitted long function */ }
             }
@@ -1113,7 +1113,7 @@
     new HtmlWebpackPlugin(
       {
         templateParameters: function () { /* omitted long function */ },
-        template: 'E:\\Vue\\projects\\slving\\public\\index.html'
+        template: 'D:\\Vue\\SLVueRunning\\public\\index.html'
       }
     ),
     /* config.plugin('preload') */
@@ -1138,8 +1138,8 @@
     new CopyWebpackPlugin(
       [
         {
-          from: 'E:\\Vue\\projects\\slving\\public',
-          to: 'E:\\Vue\\projects\\slving\\dist',
+          from: 'D:\\Vue\\SLVueRunning\\public',
+          to: 'D:\\Vue\\SLVueRunning\\dist',
           ignore: [
             'index.html',
             '.DS_Store'

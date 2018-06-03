@@ -1,6 +1,22 @@
 @charset 'utf-8';
-$background-color: #f4f4f4;
-  
+@import 'variables';
+html{
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  background: $background-color;
+  &,
+  & * {
+    margin: 0;
+    padding: 0;
+    box-sizing:inherit;
+  }
+  *::before,
+  *::after{
+    box-sizing: inherit;
+  }
+}
 a {
   text-decoration: none;
 }

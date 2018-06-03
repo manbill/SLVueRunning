@@ -1,12 +1,14 @@
 <template>
   <div id='app'>
-    <mu-appbar color="primary" v-if='appBar.height'>
-          <mu-button icon slot="left" @click="goback()">
-            <mu-icon value="keyboard_arrow_left"></mu-icon>
-          </mu-button>
-          Photo
-    </mu-appbar>
-    <router-view></router-view>
+      <mu-appbar color="primary" v-if='appBar.height'>
+            <mu-button icon slot="left" @click="goback()" large>
+              <mu-icon value="keyboard_arrow_left" ></mu-icon>
+            </mu-button>
+            {{appBar.title}}
+      </mu-appbar>
+      <div class='view'>
+        <router-view></router-view>
+      </div>
 </div>
 </template>
 
@@ -39,9 +41,5 @@ export default {
 </script>
 
 <style scoped>
-  .mu-appbar{
-    position: sticky;
-    top:0;
-    height: 56px;
-  }
+  
 </style>
