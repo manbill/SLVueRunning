@@ -1,5 +1,4 @@
 import * as types from "../mutation-types";
-import {ROUTE_PATHS} from '../../routes/app-routes/app-route';
 import {} from "vuex";
 const state = {
   features: [],
@@ -33,19 +32,57 @@ const actions = {
         title: "团队",
         order: 1,
         icon: "menu",
-        route:ROUTE_PATHS.team
+        route:"team"
       },
       {
         title: "活动",
         order: 3,
         icon: "menu",
-        route:ROUTE_PATHS.activities
+        route:"activities"
       },
       {
         title: "打卡",
+        order: 5,
+        icon: "menu",
+        route:"clocking"
+      },
+      {
+        title: "成员",
         order: 2,
         icon: "menu",
-        route:ROUTE_PATHS.clocking
+        route:"member"
+      },
+      {
+        title: "签到",
+        order: 4,
+        icon: "menu",
+        route:"attendance"
+      },
+      {
+        title: "比赛",
+        order: 6,
+        icon: "menu",
+        route:"competition"
+      },
+      {
+        title: "我的",
+        order: 9,
+        icon: "menu",
+        route:"me"
+      }
+      ,
+      {
+        title: "报名",
+        order: 7,
+        icon: "menu",
+        route:"enroll"
+      }
+      ,
+      {
+        title: "公益",
+        order: 8,
+        icon: "menu",
+        route:"commonweal"
       }
     ]).then(fts => {
       commit(types.FETCH_HOME_FEATURES_COMPLETED, fts);

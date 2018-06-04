@@ -12,7 +12,8 @@
     "alloyfinger": "^0.1.13",
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
-    "muse-ui": "^3.0.0-beta.1",
+    "moment": "^2.22.2",
+    "muse-ui": "^3.0.0-beta.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

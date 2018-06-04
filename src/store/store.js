@@ -5,20 +5,16 @@ import actions from "./actions";
 import mutations from "./mutations";
 import getters from "./getters";
 import team from './modules/team';
+import activities from './modules/activities';
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state:{
-        appBar:{
-            height:56,
-            show:true,
-            title:'首页'
-        }
     },
     mutations,
     getters,
     actions,
     modules:{
-        home,team
+        home,team,activities
     },
     strict:process.env.NODE_ENV!=='production'
 });

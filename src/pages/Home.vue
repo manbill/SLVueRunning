@@ -1,5 +1,11 @@
 <template>
-<div>
+<mu-paper>
+    <mu-appbar color="primary">
+      <mu-button icon slot="left" @click="goback()">
+        <mu-icon  :size='40'  value="keyboard_arrow_left" ></mu-icon>
+      </mu-button>
+      {{title}}
+    </mu-appbar>
     <mu-flex direction='column'>
       <div class="carousel" :style="carouselHeight">
           <carousel-image :carousels="carousels"></carousel-image>
@@ -7,17 +13,21 @@
       <div  class="features">
         <home-features :homeFeatures='homeFeatures' v-on:open-feature='openFeature'></home-features>
       </div>
+
     </mu-flex>
-</div>
+</mu-paper>
 </template>
 <script>
 import CarouselImage from "../components/CarouselImage.vue";
 import HomeFeatures from "../components/HomeFeatures.vue";
 import { mapGetters, mapActions } from "vuex";
+import mixin from "../App";
 export default {
   name: "home",
+  mixins:[mixin],
   data() {
     return {
+      title:"首页"
     };
   },
   created() {
@@ -33,7 +43,8 @@ export default {
     openFeature(route) {
       console.log(route);
       this.$router.push(route);
-    }
+    },
+    
   },
   computed: {
     innerHeight() {
