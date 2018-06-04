@@ -13,13 +13,14 @@
       <div  class="features">
         <home-features :homeFeatures='homeFeatures' v-on:open-feature='openFeature'></home-features>
       </div>
-
+      <latest-info :latesInfo='latestInfos'></latest-info>
     </mu-flex>
 </mu-paper>
 </template>
 <script>
 import CarouselImage from "../components/CarouselImage.vue";
 import HomeFeatures from "../components/HomeFeatures.vue";
+import LatestInfo from "../components/LatestInfo.vue";
 import { mapGetters, mapActions } from "vuex";
 import mixin from "../App";
 export default {
@@ -34,15 +35,28 @@ export default {
     console.log("");
     this.fetchCarousels();
     this.fetchHomeFeatures();
+    this.getMoreTeamData();
+    this.getMoreActivitesData();
   },
   mounted(){
      
   },
   methods: {
-    ...mapActions(["fetchCarousels", "fetchHomeFeatures"]),
+    ...mapActions(["fetchCarousels", "fetchHomeFeatures",'getMoreActivitesData','getMoreTeamData']),
     openFeature(route) {
       console.log(route);
       this.$router.push(route);
+    },
+    arraySlice(array,num){
+      let min = Math.floor(array.length*Math.random());
+      if(min+num>=array.length){//如果取的值超过数组长度
+        min = Math.max(array.length-num,0);
+      }
+      let max = min+num;
+      return {
+        min,
+        max
+      }
     },
     
   },
@@ -55,12 +69,42 @@ export default {
     },
     ...mapGetters({
       carousels: "getCarousels",
-      homeFeatures: "getFeatures"
-    })
+      homeFeatures: "getFeatures",
+      activities:"getActivites",
+      teams:"teams"
+    }),
+    latesTeams(){
+      console.log(this.teams);
+      const minMax = this.arraySlice(this.teams,5);
+      console.log(minMax);
+      return {
+          title:"我的团队",
+          icon:"menu",
+          items:this.teams.slice(minMax.min,5)
+      }
+    },
+    latestActivities(){
+      const minMax = this.arraySlice(this.activities,5);
+      console.log(minMax);
+      
+      return {
+          title:"最新活动",
+          icon:"info",
+          items:this.activities.slice(minMax.min,5)
+        }
+    },
+    latestInfos(){
+      console.log(this.latesTeams,this.latestActivities);
+      return [
+        this.latesTeams,
+        this.latestActivities
+      ]
+    }
   },
   components: {
     CarouselImage,
-    HomeFeatures
+    HomeFeatures,
+    LatestInfo
   }
 };
 </script>

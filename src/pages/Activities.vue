@@ -12,7 +12,7 @@
     </mu-tabs>
     <mu-list textline="three-line" :dense='true'>
       <mu-sub-header inset>团队列表</mu-sub-header>
-      <feature-item v-for="(activitie,index) of activities" :item='activitie' :key='index'></feature-item>
+      <feature-item v-for="(activitie,index) of activities.filter(a=>active2==0?true&&a.type%2==0:true)" :item='activitie' :key='index'></feature-item>
     </mu-list>
 </mu-paper>
 </template>
@@ -32,6 +32,9 @@ export default {
   created() {},
   components:{
     FeatureItem
+  },
+  updated(){
+    
   },
   methods: {
     ...mapActions(['getMoreActivitesData'])

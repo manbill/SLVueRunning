@@ -17,7 +17,7 @@ const mutations = {
   },
   [types.GET_MORE_TEAM_LIST_DATA](s, payload) {
     // console.log(payload);
-    s.teams = [...s.teams, ...payload];
+    s.teams = payload;
   }
 }
 const actions = {

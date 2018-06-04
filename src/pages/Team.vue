@@ -9,13 +9,13 @@
         <mu-icon :size='30' value="search" ></mu-icon>
       </mu-button>
     </mu-appbar>
-      <mu-tabs :value.sync="active2" color="primary" indicator-color="yellow" full-width>
+      <mu-tabs :value.sync="active2" color="primary" indicator-color="red" full-width>
         <mu-tab>我的团队</mu-tab>
         <mu-tab>所有团队</mu-tab>
       </mu-tabs>
       <mu-list textline="three-line" :dense='true'>
         <mu-sub-header inset>团队列表</mu-sub-header>
-          <feature-item v-for="(team,index) of teams" :item='team' :key='index'></feature-item>
+          <feature-item v-for="(team,index) of teams.filter(t=>active2==0?true&&t.type%3==0:true)" :item='team' :key='index'></feature-item>
         </mu-list>
   </mu-paper>
 

@@ -48,7 +48,7 @@ const actions={
         return {
           type: type.type,
           typeName:type.name,
-          name: "神采飞扬【" + i + "】活动",
+          name: `${type.type%2==0?"我的活动【"+i+"】":"神采飞扬活动【"+i+"】"}`,
           teamMemberNumbers: Math.ceil(Math.random() * 10),
           desc: `神采飞扬活动【${i}】的描述信息...`,
           dateTime: moment().format("YYYY-MM-DD HH:mm:ss"),
