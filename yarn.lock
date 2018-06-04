@@ -1043,6 +1043,10 @@ ajv@^6.1.0:
     json-schema-traverse "^0.3.0"
     uri-js "^4.2.1"
 
+alloyfinger@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/alloyfinger/-/alloyfinger-0.1.13.tgz#6c0be7d7d7d1d3ac6563aae84122af82d472a880"
+
 alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"

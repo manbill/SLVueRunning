@@ -7,7 +7,7 @@ import VueRouter from "vue-router";
 import store from "./store/store";
 import AlloyFinger from 'alloyfinger';
 import AlloyFingerPlugin from 'alloyfinger/vue/alloy_finger.vue';
-Vue.use(AlloyFingerPlugin, {
+Vue.use(AlloyFingerPlugin||window.AlloyFingerVue, {
     AlloyFinger
 });
 // import theme from 'muse-ui/lib/theme';
